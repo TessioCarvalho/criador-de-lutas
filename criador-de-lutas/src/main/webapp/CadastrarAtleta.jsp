@@ -11,8 +11,8 @@
 <body>
 	<nav class="criadorNav">
 		<ul>
-			<li><span style="color: yellow">Criar Lutas</span></li>
-			<li><img src="img/bacana.png" height="20px"></li>
+			<li><span style="color: brown">Criar Lutas</span></li>
+			<li><img src="img/cbkb.png" height="20px"></li>
 			<li><a href="cadastrarAtleta.jsp">Cadastrar Atleta</a></li>
 			<li><a href="consultarAtleta.jsp">Consultar Atleta</a></li>
 		</ul>
