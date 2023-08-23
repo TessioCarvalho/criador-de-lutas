@@ -11,9 +11,9 @@
 <body>
 	<nav class="criadorNav">
 		<ul>
-			<li><span style="color: brown">Criar Lutas</span></li>
-			<li><img src="img/cbkb.png" height="20px"></li>
-			<li><a href="cadastrarAtleta.jsp">Cadastrar Atleta</a></li>
+			<li><span style="color: #F1AE2B">Criar Lutas</span></li>
+			<li><img src="img/cbkb900x900.jpg" height="30px"></li>
+			<li><a style="color: white" href="CadastrarAtleta.jsp">Cadastrar Atleta</a></li>
 			<li><a href="consultarAtleta.jsp">Consultar Atleta</a></li>
 		</ul>
 	</nav>
@@ -22,6 +22,14 @@
 			<div>
 				<label><strong>Nome:</strong></label><input type="text"
 					name="nome">
+			</div>
+			<div>
+				<label><strong>CPF:</strong></label><input type="text"
+					name="cpf">
+			</div>
+			<div>
+				<label><strong>E-Mail:</strong></label><input type="text"
+					name="email">
 			</div>
 			<div>
 				<label><strong>Equipe:</strong></label><input type="text"
