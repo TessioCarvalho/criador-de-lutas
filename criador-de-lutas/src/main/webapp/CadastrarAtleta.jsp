@@ -24,7 +24,7 @@
 					name="nome">
 			</div>
 			<div>
-				<label><strong>CPF:</strong></label><input type="text"
+				<label><strong>CPF (somente números):</strong></label><input type="text"
 					name="cpf">
 			</div>
 			<div>
@@ -49,7 +49,15 @@
 			</div>
 			<div>
 				<label><strong>Peso:</strong></label><input type="text"
-					name="preco">
+					name="peso">
+			</div>
+			<div>
+				<%
+					String mensagem = (String) request.getAttribute("mensagem");
+					if(mensagem != null){
+						out.print(mensagem);
+					}
+				%>			
 			</div>
 			<div>
 				<input id="criadorButton" type="submit" name="salvar"
