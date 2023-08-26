@@ -7,7 +7,7 @@ public class Atleta {
 	private String email;
 	private String equipe;
 	private String faixa;
-	private char sexo;
+	private String sexo;
 	private int idade;
 	private double peso;
 	
@@ -16,7 +16,7 @@ public class Atleta {
 	}
 
 	public Atleta(String nome, int cpf, String email, String equipe, 
-					String faixa, char sexo, int idade, double peso) {
+					String faixa, String sexo, int idade, double peso) {
 		super();
 		this.nome = nome;
 		this.cpf = cpf;
@@ -52,11 +52,11 @@ public class Atleta {
 		this.faixa = faixa;
 	}
 
-	public char getSexo() {
+	public String getSexo() {
 		return sexo;
 	}
 
-	public void setSexo(char sexo) {
+	public void setSexo(String sexo) {
 		this.sexo = sexo;
 	}
 
