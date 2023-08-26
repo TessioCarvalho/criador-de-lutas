@@ -92,4 +92,8 @@ public class Atleta {
 		this.email = email;
 	}
 	
+	public void salvar() {
+		System.out.println("Salvo");
+	}
+	
 }

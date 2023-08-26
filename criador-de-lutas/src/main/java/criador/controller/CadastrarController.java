@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import criador.model.Atleta;
+
 /**
  * Servlet implementation class CadastrarController
  */
@@ -49,9 +51,10 @@ public class CadastrarController extends HttpServlet {
 		String equipe = request.getParameter("equipe");
 		String faixa = request.getParameter("faixa");
 		String sexo = request.getParameter("sexo");
-		double cpf;
-		int idade;
-		double peso;
+		double cpf = 0;
+		int idade = 0;
+		double peso = 0;
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("CadastrarAtleta.jsp");
 		if (nome != null && !nome.isEmpty() 
 				&& email != null && !email.isEmpty() 
@@ -65,6 +68,9 @@ public class CadastrarController extends HttpServlet {
 			Double.parseDouble(request.getParameter("cpf"));
 			Integer.parseInt(request.getParameter("idade"));
 			Double.parseDouble(request.getParameter("peso"));
+			
+			Atleta atleta = new Atleta(nome, cpf, email, equipe, faixa, sexo, idade, peso);
+			atleta.salvar();
 			mensagem = "Atleta cadastrado com sucesso!";
 		} else {
 			mensagem = "ATENCAO!!! Todos os campos devem ser preenchidos.";
