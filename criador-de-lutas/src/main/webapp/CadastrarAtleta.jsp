@@ -24,7 +24,7 @@
 					name="nome">
 			</div>
 			<div>
-				<label><strong>CPF (somente números):</strong></label><input type="text"
+				<label><strong>CPF:</strong></label><input type="text"
 					name="cpf">
 			</div>
 			<div>

@@ -3,7 +3,7 @@ package criador.model;
 public class Atleta {
 	
 	private String nome;
-	private double cpf;
+	private String cpf;
 	private String email;
 	private String equipe;
 	private String faixa;
@@ -15,7 +15,7 @@ public class Atleta {
 
 	}
 
-	public Atleta(String nome, double cpf, String email, String equipe, 
+	public Atleta(String nome, String cpf, String email, String equipe, 
 					String faixa, String sexo, int idade, double peso) {
 		super();
 		this.nome = nome;
@@ -76,11 +76,11 @@ public class Atleta {
 		this.peso = peso;
 	}
 
-	public double getCpf() {
+	public String getCpf() {
 		return cpf;
 	}
 
-	public void setCpf(double cpf) {
+	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
 
