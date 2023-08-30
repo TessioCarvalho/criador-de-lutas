@@ -7,13 +7,13 @@ import criador.model.Atleta;
 public class AtletaDao {
 	
 	public void cadastrarAtleta(Atleta atleta) {
-		String sql = "INSERT INTO atleta VALUES (?,?,?,?,?,?,?,?)";
+		String insert = "INSERT INTO atleta (nome, cpf, email, equipe, faixa, sexo, idade, peso) "
+				+ "VALUES (?,?,?,?,?,?,?,?)";
+		Connection conn = ConexaoMySql.getConexao();
 		PreparedStatement stmt = null;
-		Connection conexao = null;
 		
 		try {
-			conexao = new ConexaoMySql().conectar();
-			stmt = conexao.prepareStatement(sql);
+			stmt = conn.prepareStatement(insert);
 			stmt.setString(1, atleta.getNome());
 			stmt.setString(2, atleta.getCpf());
 			stmt.setString(3, atleta.getEmail());
@@ -33,8 +33,8 @@ public class AtletaDao {
 				e2.printStackTrace();
 			}
 			try {
-				if(conexao != null)
-					conexao.close();
+				if(conn != null)
+					conn.close();
 			} catch (Exception e2) {
 				e2.printStackTrace();
 			}

@@ -2,20 +2,21 @@ package criador.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class ConexaoMySql {
 
-	public Connection conectar() {
-		
-		Connection conn = null;
-		
+	public static Connection getConexao() {
 		try {
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/criadordelutas",
-					"root", "9430");
-		} catch (Exception e) {
-			e.printStackTrace();;
+			final String url = "jdbc:mysql://localhost?verifyServerCertificate=false&useSSL=true";
+			final String user = "root";
+			final String password = "9430";
+			
+			return DriverManager.getConnection(url, user, password);
+		} catch (SQLException e){
+			throw new RuntimeException(e);
 		}
-		return conn;
+		
 	}
 
 }
