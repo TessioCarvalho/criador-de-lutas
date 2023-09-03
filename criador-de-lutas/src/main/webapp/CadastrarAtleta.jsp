@@ -3,18 +3,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="css/pageStyle.css">
-
-<meta charset="ISO-8859-1">
-<title>Criador de lutas</title>
+	<link rel="stylesheet" href="css/cadastroStyle.css">
+	<meta charset="ISO-8859-1">
+	<title>Criador de lutas - Cadastro</title>
 </head>
 <body>
 	<nav class="criadorNav">
 		<ul>
-			<li><span style="color: #F1AE2B">Criar Lutas</span></li>
+			<li><span style="color: #F1AE2B">Cadastrar atleta</span></li>
 			<li><img src="img/cbkb900x900.jpg" height="30px"></li>
 			<li><a style="color: white" href="CadastrarAtleta.jsp">Cadastrar Atleta</a></li>
-			<li><a href="consultarAtleta.jsp">Consultar Atleta</a></li>
+			<li><a style="color: white" href="BuscarAtleta.jsp">Buscar Atleta</a></li>
 		</ul>
 	</nav>
 	<main class="criadorMain">
