@@ -8,7 +8,7 @@ public class ConexaoMySql {
 
 	public static Connection getConexao() {
 		try {
-			final String url = "jdbc:mysql://localhost?verifyServerCertificate=false&useSSL=true";
+			final String url = "jdbc:mysql://localhost/criadordelutas?verifyServerCertificate=false&useSSL=false";
 			final String user = "root";
 			final String password = "9430";
 			
