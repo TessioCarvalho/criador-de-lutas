@@ -10,10 +10,9 @@
 <body>
 	<nav class="criadorNav">
 		<ul>
-			<li><span style="color: #F1AE2B">Cadastrar atleta</span></li>
+			<li><a style="color: #F1AE2B" href="home.jsp">Início</a></li>
 			<li><img src="img/cbkb900x900.jpg" height="30px"></li>
-			<li><a style="color: white" href="CadastrarAtleta.jsp">Cadastrar Atleta</a></li>
-			<li><a style="color: white" href="BuscarAtleta.jsp">Buscar Atleta</a></li>
+			<li><span style="color: white">Cadastrar atleta</span></li>
 		</ul>
 	</nav>
 	<main class="criadorMain">
