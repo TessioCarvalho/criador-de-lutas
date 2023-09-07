@@ -9,10 +9,11 @@ public class AtletaDao {
 	public void cadastrarAtleta(Atleta atleta) {
 		String insert = "INSERT INTO atleta (nome, cpf, email, equipe, faixa, sexo, idade, peso) "
 				+ "VALUES (?,?,?,?,?,?,?,?)";
-		Connection conn = ConexaoMySql.getConexao();
 		PreparedStatement stmt = null;
+		Connection conn = null;
 		
 		try {
+			conn = new ConexaoMySql().getConexao();
 			stmt = conn.prepareStatement(insert);
 			stmt.setString(1, atleta.getNome());
 			stmt.setString(2, atleta.getCpf());
@@ -39,9 +40,5 @@ public class AtletaDao {
 				e2.printStackTrace();
 			}
 		}
-		
-		System.out.println("Registro criado!");
-		
 	}
-
 }

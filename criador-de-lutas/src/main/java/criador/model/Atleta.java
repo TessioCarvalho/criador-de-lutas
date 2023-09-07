@@ -1,7 +1,5 @@
 package criador.model;
 
-import java.sql.SQLException;
-
 import criador.dao.AtletaDao;
 
 public class Atleta {
@@ -96,7 +94,7 @@ public class Atleta {
 		this.email = email;
 	}
 	
-	public void salvar() throws SQLException {
+	public void salvar() {
 		new AtletaDao().cadastrarAtleta(this);
 	}
 	

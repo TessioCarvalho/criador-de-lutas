@@ -1,7 +1,6 @@
 package criador.controller;
 
 import java.io.IOException;
-import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -53,8 +52,8 @@ public class CadastrarController extends HttpServlet {
 		String equipe = request.getParameter("equipe");
 		String faixa = request.getParameter("faixa");
 		String sexo = request.getParameter("sexo");
-		int idade = 0;
-		double peso = 0;
+		int idade = Integer.parseInt(request.getParameter("idade"));
+		double peso = Double.parseDouble(request.getParameter("peso").replace(",", "."));
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("CadastrarAtleta.jsp");
 		if (nome != null && !nome.isEmpty() 
@@ -66,15 +65,8 @@ public class CadastrarController extends HttpServlet {
 				&& request.getParameter("idade") != null && !request.getParameter("idade").isEmpty()
 				&& request.getParameter("peso") != null && !request.getParameter("peso").isEmpty()) {
 			
-			Integer.parseInt(request.getParameter("idade"));
-			Double.parseDouble(request.getParameter("peso"));
-			
 			Atleta atleta = new Atleta(nome, cpf, email, equipe, faixa, sexo, idade, peso);
-			try {
-				atleta.salvar();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+			atleta.salvar();
 			mensagem = "Atleta cadastrado com sucesso!";
 		} else {
 			mensagem = "ATENCAO!!! Todos os campos devem ser preenchidos.";
