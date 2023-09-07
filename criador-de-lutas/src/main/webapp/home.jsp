@@ -18,7 +18,7 @@
 	<main class="criadorMain">
 		<form action="" class="criadorForm">
 		<h2>Seja bem-vindo ao Criador de lutas! </h2>
-		<p>Escolha a uma opção acima.</p>
+		<p>Escolha uma das opções acima.</p>
 		</form>
 	</main>
 </body>
