@@ -52,8 +52,6 @@ public class CadastrarController extends HttpServlet {
 		String equipe = request.getParameter("equipe");
 		String faixa = request.getParameter("faixa");
 		String sexo = request.getParameter("sexo");
-		int idade = Integer.parseInt(request.getParameter("idade"));
-		double peso = Double.parseDouble(request.getParameter("peso").replace(",", "."));
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("CadastrarAtleta.jsp");
 		if (nome != null && !nome.isEmpty() 
@@ -64,7 +62,8 @@ public class CadastrarController extends HttpServlet {
 				&& sexo != null && !sexo.isEmpty()
 				&& request.getParameter("idade") != null && !request.getParameter("idade").isEmpty()
 				&& request.getParameter("peso") != null && !request.getParameter("peso").isEmpty()) {
-			
+			int idade = Integer.parseInt(request.getParameter("idade"));
+			double peso = Double.parseDouble(request.getParameter("peso").replace(",", "."));
 			Atleta atleta = new Atleta(nome, cpf, email, equipe, faixa, sexo, idade, peso);
 			atleta.cadastrar();
 			mensagem = "Atleta cadastrado com sucesso!";

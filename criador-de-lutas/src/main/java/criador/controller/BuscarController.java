@@ -42,12 +42,18 @@ public class BuscarController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		String mensagem;
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		String cpf = request.getParameter("cpf");
-		ArrayList<Atleta> atletas = new Atleta().buscar(cpf);
-		request.setAttribute("atletas", atletas);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("BuscarAtleta.jsp");
+		if (cpf != null && !cpf.isEmpty()) {
+			ArrayList<Atleta> atletas = new Atleta().buscar(cpf);
+			request.setAttribute("atletas", atletas);
+		} else {
+			mensagem = "Atleta não encontrado!";
+			request.setAttribute("mensagem", mensagem);
+		}
 		dispatcher.forward(request, response);
 		
 	}

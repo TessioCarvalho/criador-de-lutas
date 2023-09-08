@@ -5,9 +5,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" href="css/buscaStyle.css">
-	<meta charset="ISO-8859-1">
-	<title>Criador de lutas - Pesquisa</title>
+<link rel="stylesheet" href="css/buscaStyle.css">
+<meta charset="ISO-8859-1">
+<title>Criador de lutas - Pesquisa</title>
 </head>
 <body>
 	<nav class="criadorNav">
@@ -18,18 +18,16 @@
 		</ul>
 	</nav>
 	<main class="criadorMain">
-	<div class="criadorForm">
-		<form action="buscaAtleta" method="post">
+		<form action="buscaAtleta" method="post" class="criadorForm">
 			<div>
-				<label><strong>Digite o CPF:</strong></label><input
-					type="text" name="cpf">
+				<label><strong>Digite o CPF:</strong></label><input type="text"
+					name="cpf">
 			</div>
-			<br>
-			<div class="criadorColumn">
+			<div>
 				<input id="criadorButton" type="submit" name="salvar"
 					value="Consultar Atleta">
 			</div>
-			<div class="criadorColumn">
+			<div>
 				<%
 				String mensagem = (String) request.getAttribute("mensagem");
 				if (mensagem != null)
@@ -37,40 +35,47 @@
 				%>
 			</div>
 		</form>
-		<%if (request.getAttribute("atletas") != null) {
+		<%
+		if (request.getAttribute("atletas") != null) {
 			List<?> atletas = (List<?>) request.getAttribute("atletas");
 			for (int contador = 0; contador <= (atletas.size() - 1); contador++) {
-				Atleta atleta = (Atleta) atletas.get(contador);%>
-		<form action="modificarAtleta" method="post">
-			<div class="criadorDivMother">
-				<div class="criadorDivItem">
-					<div class="criadorColumn">
-						<span style="font-weight: bold">Nome:</span> 
-						<span><%out.print(atleta.getNome());%></span> 
-						<input type="hidden" name="nome" value="<%out.print(atleta.getNome());%>">
-					</div>
-					<div class="criadorColumn">
-						<span style="font-weight: bold">Equipe:</span>
-						<span><%out.print(atleta.getEquipe());%></span>
-					</div>
-					<div class="criadorColumn">
-						<span style="font-weight: bold">Peso:</span>
-						<span><%out.print(atleta.getPeso());%>
-						</span>
-					</div>
-					<div class="criadorColumn">
-						<input id="criadorItemButton" type="submit" name="alterar"
-							value="Alterar"> <input id="criadorItemButton"
-							type="submit" name="apagar" value="Apagar">
-					</div>
-				</div>
+				Atleta atleta = (Atleta) atletas.get(contador);
+		%>
+		<form action="" method="post" class="criadorForm">
+
+			<div>
+				<span style="font-weight: bold">Nome:</span> <span>
+					<%
+					out.print(atleta.getNome());
+					%>
+				</span>
 			</div>
+			<div>
+				<span style="font-weight: bold">Equipe:</span> <span>
+					<%
+					out.print(atleta.getEquipe());
+					%>
+				</span>
+			</div>
+			<div>
+				<span style="font-weight: bold">Peso:</span> <span>
+					<%
+					out.print(atleta.getPeso());
+					%>
+				</span>
+			</div>
+			<br>
+			<div>
+				<input id="criadorButton" type="submit" name="alterar"
+					value="Alterar"> <input id="criadorButton" type="submit"
+					name="apagar" value="Apagar">
+			</div>
+
 		</form>
 		<%
 		}
 		}
 		%>
-	</div>
 	</main>
 </body>
 </html>
