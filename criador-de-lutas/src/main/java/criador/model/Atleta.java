@@ -1,5 +1,7 @@
 package criador.model;
 
+import java.util.ArrayList;
+
 import criador.dao.AtletaDao;
 
 public class Atleta {
@@ -94,8 +96,12 @@ public class Atleta {
 		this.email = email;
 	}
 	
-	public void salvar() {
+	public void cadastrar() {
 		new AtletaDao().cadastrarAtleta(this);
+	}
+	
+	public ArrayList<Atleta> buscar(String cpf){
+		return new AtletaDao().buscarAtleta(cpf);
 	}
 	
 }

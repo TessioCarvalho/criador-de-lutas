@@ -2,6 +2,9 @@ package criador.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+
 import criador.model.Atleta;
 
 public class AtletaDao {
@@ -40,5 +43,52 @@ public class AtletaDao {
 				e2.printStackTrace();
 			}
 		}
+	}
+	
+	public ArrayList<Atleta> buscarAtleta(String cpf){
+		String select = "SELECT * FROM atleta WHERE cpf LIKE '%"+ cpf +"%'";
+		ResultSet rs = null;
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		Atleta atleta = null;
+		ArrayList<Atleta> atletas = null;
+		
+		try {
+			conn = new ConexaoMySql().getConexao();
+			stmt = conn.prepareStatement(select);
+			rs = stmt.executeQuery();
+			if (rs != null) {
+				atletas = new ArrayList<Atleta>();
+				while (rs.next()) {
+					atleta = new Atleta();
+					atleta.setNome(rs.getString("nome"));
+					atleta.setCpf(rs.getString("cpf"));
+					atleta.setEmail(rs.getString("email"));
+					atleta.setEquipe(rs.getString("equipe"));
+					atleta.setFaixa(rs.getString("faixa"));
+					atleta.setSexo(rs.getString("sexo"));
+					atleta.setIdade(rs.getInt("idade"));
+					atleta.setPeso(rs.getDouble("peso"));
+					atletas.add(atleta);
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(stmt != null)
+					stmt.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+			try {
+				if(conn != null)
+					conn.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		
+		return atletas;
 	}
 }

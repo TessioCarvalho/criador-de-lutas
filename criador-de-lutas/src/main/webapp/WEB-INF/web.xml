@@ -10,9 +10,19 @@
   	<servlet-class>criador.controller.CadastrarController</servlet-class>
   </servlet>
   
+  <servlet>
+  	<servlet-name>buscar</servlet-name>
+  	<servlet-class>criador.controller.BuscarController</servlet-class>
+  </servlet>
+
   <servlet-mapping>
   	<servlet-name>cadastrar</servlet-name>
   	<url-pattern>/cadastroAtleta</url-pattern>
   </servlet-mapping>
   
+  <servlet-mapping>
+  	<servlet-name>buscar</servlet-name>
+  	<url-pattern>/buscaAtleta</url-pattern>
+  </servlet-mapping>
+
 </web-app>

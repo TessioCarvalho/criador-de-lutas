@@ -66,7 +66,7 @@ public class CadastrarController extends HttpServlet {
 				&& request.getParameter("peso") != null && !request.getParameter("peso").isEmpty()) {
 			
 			Atleta atleta = new Atleta(nome, cpf, email, equipe, faixa, sexo, idade, peso);
-			atleta.salvar();
+			atleta.cadastrar();
 			mensagem = "Atleta cadastrado com sucesso!";
 		} else {
 			mensagem = "ATENCAO!!! Todos os campos devem ser preenchidos.";
