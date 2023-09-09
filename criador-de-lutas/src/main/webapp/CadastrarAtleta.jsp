@@ -16,7 +16,7 @@
 		</ul>
 	</nav>
 	<main class="criadorMain">
-		<form action="cadastroAtleta" method="post" class="criadorForm">
+		<form action="cadastrarAtleta" method="post" class="criadorForm">
 			<div>
 				<label><strong>Nome:</strong></label><input type="text"
 					name="nome">

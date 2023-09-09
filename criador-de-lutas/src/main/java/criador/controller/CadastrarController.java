@@ -47,7 +47,7 @@ public class CadastrarController extends HttpServlet {
 		
 		String mensagem;
 		String nome = request.getParameter("nome");
-		String cpf = request.getParameter("cpf");
+		String cpf = request.getParameter("cpf").replace(".", "").replace("-", "");
 		String email = request.getParameter("email");
 		String equipe = request.getParameter("equipe");
 		String faixa = request.getParameter("faixa");

@@ -1,7 +1,6 @@
 package criador.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,18 +12,18 @@ import javax.servlet.http.HttpServletResponse;
 import criador.model.Atleta;
 
 /**
- * Servlet implementation class BuscarController
+ * Servlet implementation class ExcluirController
  */
-@WebServlet("/BuscarController")
-public class BuscarController extends HttpServlet {
+@WebServlet("/ExcluirController")
+public class ExcluirController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public BuscarController() {
+	public ExcluirController() {
 		super();
-		
+
 	}
 
 	/**
@@ -33,7 +32,8 @@ public class BuscarController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+		this.doPost(request, response);
+
 	}
 
 	/**
@@ -42,25 +42,18 @@ public class BuscarController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String mensagem;
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
-		String cpf = request.getParameter("cpf").replace(".", "").replace("-", "");
-		RequestDispatcher dispatcher = request.getRequestDispatcher("BuscarAtleta.jsp");
-		if (cpf != null && !cpf.isEmpty()) {
-			ArrayList<Atleta> atletas = new Atleta().buscar(cpf);
-			if (atletas.isEmpty()) {
-		        mensagem = "CPF não encontrado. Cadastre o atleta na página de cadastro.";
-		        request.setAttribute("mensagem", mensagem);
-		    } else {
-		        request.setAttribute("atletas", atletas);
-		    }
-		} else {
-			mensagem = "Favor digitar um CPF";
-			request.setAttribute("mensagem", mensagem);
-		}
-		dispatcher.forward(request, response);
+		String excluir = request.getParameter("excluir");
+		String cpf = request.getParameter("cpf");
 		
+		if (excluir != null && cpf != null) {
+			new Atleta().excluir(cpf);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("BuscarAtleta.jsp");
+			request.setAttribute("mensagem", "Atleta excluído com suscesso!");
+			dispatcher.forward(request, response);
+		}
+
 	}
 
 }

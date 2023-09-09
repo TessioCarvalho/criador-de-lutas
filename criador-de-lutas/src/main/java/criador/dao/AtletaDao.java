@@ -88,7 +88,38 @@ public class AtletaDao {
 				e2.printStackTrace();
 			}
 		}
-		
 		return atletas;
+	}
+	
+	public void excluirAtleta (String cpf) {
+		String delete = "DELETE FROM atleta WHERE cpf = ?";
+		PreparedStatement stmt = null;
+		Connection conn = null;
+		
+		try {
+			conn = new ConexaoMySql().getConexao();
+			stmt = conn.prepareStatement(delete);
+			stmt.setString(1, cpf);
+			stmt.execute();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(stmt != null)
+					stmt.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+			try {
+				if(conn != null)
+					conn.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+	}
+	
+	public void alterarAtleta () {
+		
 	}
 }

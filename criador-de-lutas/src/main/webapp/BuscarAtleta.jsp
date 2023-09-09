@@ -18,7 +18,7 @@
 		</ul>
 	</nav>
 	<main class="criadorMain">
-		<form action="buscaAtleta" method="post" class="criadorForm">
+		<form action="buscarAtleta" method="post" class="criadorForm">
 			<div>
 				<label><strong>Digite o CPF:</strong></label><input type="text"
 					name="cpf">
@@ -41,36 +41,38 @@
 			for (int contador = 0; contador <= (atletas.size() - 1); contador++) {
 				Atleta atleta = (Atleta) atletas.get(contador);
 		%>
-		<form action="" method="post" class="criadorForm">
-
-			<div>
-				<span style="font-weight: bold">Nome:</span> <span>
-					<%
-					out.print(atleta.getNome());
-					%>
-				</span>
+		<form action="excluirAtleta" method="post">
+			<div class="criadorForm">
+				<div>
+					<span style="font-weight: bold">Nome:</span> <span>
+						<%
+						out.print(atleta.getNome());
+						%>
+						<input type="hidden" name="cpf" value="<%out.print(atleta.getCpf());%>">
+					</span>
+				</div>
+				<div>
+					<span style="font-weight: bold">Equipe:</span> <span>
+						<%
+						out.print(atleta.getEquipe());
+						%>
+					</span>
+				</div>
+				<div>
+					<span style="font-weight: bold">Peso:</span> <span>
+						<%
+						out.print(atleta.getPeso());
+						%>
+					</span>
+				</div>
+				<br>
+				<div>
+					<input id="criadorButton" type="submit" 
+						name="alterar" value="Alterar"> 
+					<input id="criadorButton" type="submit"
+						name="excluir" value="Excluir">
+				</div>
 			</div>
-			<div>
-				<span style="font-weight: bold">Equipe:</span> <span>
-					<%
-					out.print(atleta.getEquipe());
-					%>
-				</span>
-			</div>
-			<div>
-				<span style="font-weight: bold">Peso:</span> <span>
-					<%
-					out.print(atleta.getPeso());
-					%>
-				</span>
-			</div>
-			<br>
-			<div>
-				<input id="criadorButton" type="submit" name="alterar"
-					value="Alterar"> <input id="criadorButton" type="submit"
-					name="apagar" value="Apagar">
-			</div>
-
 		</form>
 		<%
 		}
