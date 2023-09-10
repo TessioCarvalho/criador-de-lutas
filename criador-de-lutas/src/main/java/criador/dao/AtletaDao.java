@@ -14,7 +14,6 @@ public class AtletaDao {
 				+ "VALUES (?,?,?,?,?,?,?,?)";
 		PreparedStatement stmt = null;
 		Connection conn = null;
-		
 		try {
 			conn = new ConexaoMySql().getConexao();
 			stmt = conn.prepareStatement(insert);
@@ -52,7 +51,6 @@ public class AtletaDao {
 		PreparedStatement stmt = null;
 		Atleta atleta = null;
 		ArrayList<Atleta> atletas = null;
-		
 		try {
 			conn = new ConexaoMySql().getConexao();
 			stmt = conn.prepareStatement(select);
@@ -95,7 +93,6 @@ public class AtletaDao {
 		String delete = "DELETE FROM atleta WHERE cpf = ?";
 		PreparedStatement stmt = null;
 		Connection conn = null;
-		
 		try {
 			conn = new ConexaoMySql().getConexao();
 			stmt = conn.prepareStatement(delete);
@@ -119,7 +116,79 @@ public class AtletaDao {
 		}
 	}
 	
-	public void alterarAtleta () {
-		
+	public Atleta buscarCpf(String cpf) {
+		String select = "SELECT * FROM atleta WHERE cpf = ?";
+		ResultSet rs = null;
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		Atleta atleta = null;
+		try {
+			conn = new ConexaoMySql().getConexao();
+			stmt = conn.prepareStatement(select);
+			stmt.setString(1, cpf);
+			rs = stmt.executeQuery();
+			if(rs != null && rs.next()) {
+				atleta = new Atleta();
+				atleta.setNome(rs.getString("nome"));
+				atleta.setCpf(rs.getString("cpf"));
+				atleta.setEmail(rs.getString("email"));
+				atleta.setEquipe(rs.getString("equipe"));
+				atleta.setFaixa(rs.getString("faixa"));
+				atleta.setSexo(rs.getString("sexo"));
+				atleta.setIdade(rs.getInt("idade"));
+				atleta.setPeso(rs.getDouble("peso"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(stmt != null)
+					stmt.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+			try {
+				if(conn != null)
+					conn.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return atleta;
+	}
+	
+	public void alterarAtleta(Atleta atleta) {
+		String update = "UPDATE atleta SET nome = ?, email = ?, equipe = ?, faixa = ?, sexo = ?, idade = ?, peso = ?"
+				+ "WHERE cpf = ?";
+		PreparedStatement stmt = null;
+		Connection conn = null;
+		try {
+			conn = new ConexaoMySql().getConexao();
+			stmt = conn.prepareStatement(update);
+			stmt.setString(1, atleta.getNome());
+			stmt.setString(2, atleta.getEmail());
+			stmt.setString(3, atleta.getEquipe());
+			stmt.setString(4, atleta.getFaixa());
+			stmt.setString(5, atleta.getSexo());
+			stmt.setInt(6, atleta.getIdade());
+			stmt.setDouble(7, atleta.getPeso());
+			stmt.setString(8, atleta.getCpf());
+			stmt.execute();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(stmt != null)
+					stmt.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+			try {
+				if(conn != null)
+					conn.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
 	}
 }

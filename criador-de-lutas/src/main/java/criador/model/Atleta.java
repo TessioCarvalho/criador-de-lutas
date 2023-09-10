@@ -107,4 +107,12 @@ public class Atleta {
 	public void excluir(String cpf) {
 		new AtletaDao().excluirAtleta(cpf);
 	}
+	
+	public Atleta buscarCpf(String cpf) {
+		return new AtletaDao().buscarCpf(cpf);
+	}
+	
+	public void alterar() {
+		new AtletaDao().alterarAtleta(this);
+	}
 }

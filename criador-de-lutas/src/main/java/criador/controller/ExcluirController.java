@@ -45,12 +45,18 @@ public class ExcluirController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		String excluir = request.getParameter("excluir");
+		String alterar = request.getParameter("alterar");
 		String cpf = request.getParameter("cpf");
 		
 		if (excluir != null && cpf != null) {
 			new Atleta().excluir(cpf);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("BuscarAtleta.jsp");
 			request.setAttribute("mensagem", "Atleta excluído com suscesso!");
+			dispatcher.forward(request, response);
+		} else if(alterar != null && cpf != null) {
+			Atleta atleta = new Atleta().buscarCpf(cpf);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("AlterarAtleta.jsp");
+			request.setAttribute("atleta", atleta);
 			dispatcher.forward(request, response);
 		}
 
