@@ -50,3 +50,13 @@
 	align-items: center;
 	align-self: center;
 }
+
+#button {
+	background-color: #F1AE2B;
+	border: none;
+	border-radius: 5px;
+	color: white;
+	font-size: 20px;
+	text-align: center;
+	cursor: pointer;
+}
